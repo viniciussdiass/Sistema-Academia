@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Plano</title>
+</head>
+<body>
+    <h1>Detalhes do Plano: {{ object.nome }}</h1>
+    <p>Descrição: {{ object.descricao }}</p>
+    <p>Valor Mensal: {{ object.valor_mensal }}</p>
+    <a href="{% url 'plano_update' object.id %}">Editar</a> | 
+    <a href="{% url 'plano_delete' object.id %}">Deletar</a> | 
+    <a href="{% url 'plano_list' %}">Voltar</a>
+</body>
+</html>

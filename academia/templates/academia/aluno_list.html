@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Alunos</title>
+</head>
+<body>
+    <h1>Lista de Alunos</h1>
+    
+    <a href="{% url 'aluno_create' %}">
+        <button>Adicionar Aluno</button>
+    </a>
+    <a href="{% url 'plano_create' %}">
+        <button>Adicionar Plano</button>
+    </a>
+    <ul>
+        
+        {% for aluno in object_list %}
+        <li>
+            {{ aluno.nome }} - Plano: {{ aluno.plano.nome }}
+        </li>
+        {% empty %}
+        <p>Nenhum aluno cadastrado.</p>
+        {% endfor %}
+    </ul>
+</body>
+</html>

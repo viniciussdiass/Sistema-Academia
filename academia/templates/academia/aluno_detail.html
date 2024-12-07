@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Aluno</title>
+</head>
+<body>
+    <h1>Detalhes do Aluno: {{ object.nome }}</h1>
+    <p>Idade: {{ object.idade }}</p>
+    <p>Email: {{ object.email }}</p>
+    <p>Telefone: {{ object.telefone }}</p>
+    <p>Plano: {{ object.plano.nome }}</p>
+    <a href="{% url 'aluno_update' object.id %}">Editar</a> | 
+    <a href="{% url 'aluno_delete' object.id %}">Deletar</a> | 
+    <a href="{% url 'aluno_list' %}">Voltar</a>
+</body>
+</html>
