@@ -6,13 +6,27 @@
     <title>Lista de Planos</title>
 </head>
 <body>
-    <h1>Lista de Planos de Treino</h1>
-    <a href="{% url 'plano_create' %}">Criar Novo Plano</a>
+    <h1>Lista de Planos</h1>
+    
+    <a href="{% url 'plano_create' %}">
+        <button>Adicionar Plano</button>
+    </a>
     <ul>
+        
         {% for plano in object_list %}
         <li>
-            <a href="{% url 'plano_detail' plano.id %}">{{ plano.nome }}</a>
+            {{ plano.nome }} - Descrição: {{ plano.descricao }} - Valor Mensal: R$ {{ plano.valor_mensal }}
+            
+            <a href="{% url 'plano_update' plano.id %}">
+                <button>Editar</button>
+            </a>
+            
+            <a href="{% url 'plano_delete' plano.id %}">
+                <button>Apagar</button>
+            </a>
         </li>
+        {% empty %}
+        <p>Nenhum plano cadastrado.</p>
         {% endfor %}
     </ul>
 </body>

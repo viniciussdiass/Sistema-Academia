@@ -19,6 +19,14 @@
         {% for aluno in object_list %}
         <li>
             {{ aluno.nome }} - Plano: {{ aluno.plano.nome }}
+            
+            <a href="{% url 'aluno_update' aluno.id %}">
+                <button>Editar</button>
+            </a>
+            
+            <a href="{% url 'aluno_delete' aluno.id %}">
+                <button>Apagar</button>
+            </a>
         </li>
         {% empty %}
         <p>Nenhum aluno cadastrado.</p>

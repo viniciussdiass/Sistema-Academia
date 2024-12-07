@@ -3,6 +3,18 @@ from django.views.generic import (
     ListView, DetailView, CreateView, UpdateView, DeleteView
 )
 from .models import PlanoTreino, Aluno
+from django import forms
+
+
+
+class AlunoForm(forms.ModelForm):
+    class Meta:
+        model = Aluno
+        fields = ['nome', 'idade', 'email', 'telefone', 'plano']
+        widgets = {
+            'plano': forms.Select(attrs={'class': 'form-control'})
+        }
+
 
 
 class PlanoTreinoListView(ListView):
@@ -48,14 +60,14 @@ class AlunoDetailView(DetailView):
 
 class AlunoCreateView(CreateView):
     model = Aluno
-    fields = ['nome', 'idade', 'email', 'telefone', 'plano']
+    form_class = AlunoForm
     template_name = 'academia/aluno_form.html'
     success_url = reverse_lazy('aluno_list')
 
 
 class AlunoUpdateView(UpdateView):
     model = Aluno
-    fields = ['nome', 'idade', 'email', 'telefone', 'plano']
+    form_class = AlunoForm
     template_name = 'academia/aluno_form.html'
     success_url = reverse_lazy('aluno_list')
 
